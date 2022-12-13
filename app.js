@@ -6,6 +6,7 @@ const includeSymbolsElement = document.getElementById("includeSymbols");
 const passwordDisplay = document.getElementById("passwordDisplay");
 const form = document.getElementById("passwordGeneratorForm");
 
+//CHARACTER CODES
 const LOWERCASE_CHAR_CODES = arrayFromLowToHigh(97, 122);
 const UPPERCASE_CHAR_CODES = arrayFromLowToHigh(65, 90);
 const NUMBER_CHAR_CODES = arrayFromLowToHigh(48, 57);
@@ -14,9 +15,16 @@ const SYMBOL_CHAR_CODES = arrayFromLowToHigh(33, 47)
   .concat(arrayFromLowToHigh(91, 96))
   .concat(arrayFromLowToHigh(123, 126));
 
+//SYNC CHARACTERS IN CHARACTER AMOUNT
 characterAmountRange.addEventListener("input", syncCharacterAmount);
 characterAmountNumber.addEventListener("input", syncCharacterAmount);
+function syncCharacterAmount(e) {
+  const value = e.target.value;
+  characterAmountNumber.value = value;
+  characterAmountRange.value = value;
+}
 
+//GENERATE PASSWORD ON SUBMIT
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const characterAmount = characterAmountNumber.value;
@@ -34,12 +42,7 @@ form.addEventListener("submit", (e) => {
   passwordDisplay.innerText = password;
 });
 
-function syncCharacterAmount(e) {
-  const value = e.target.value;
-  characterAmountNumber.value = value;
-  characterAmountRange.value = value;
-}
-
+//PASSWORD GENERATOR
 function generatePassword(
   characterAmount,
   includeUppercase,
@@ -65,6 +68,7 @@ function generatePassword(
   return passwordCharacters.join("");
 }
 
+//RANGE FUNCTION (BOTH INCLUDED)
 function arrayFromLowToHigh(low, high) {
   const arrayy = [];
   for (let i = low; i <= high; i++) {

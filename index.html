@@ -5,46 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <script defer src="./app.js"></script>
+    <script src="./app.js" defer></script>
+    <script src="./copybtn.js" defer></script>
     <title>Password Generator</title>
   </head>
   <body>
+    <header>
+      <h1 class="title"><u>Password Generator</u></h1>
+    </header>
+
     <div class="container">
-      <h1 class="title">Password Generator</h1>
-      <h3 class="password-display" id="passwordDisplay">
-        <span style="font-style: oblique; color: grey"> </span>
-      </h3>
-      <form id="passwordGeneratorForm" class="form">
+      <h3 class="password-display" id="passwordDisplay">&lt;pwd&gt;</h3>
+      <button id="copy">📄</button>
+    </div>
+    <form id="passwordGeneratorForm" class="form">
+      <div class="character-container">
         <label for="characterAmountNumber">Number of Characters</label>
         <div class="character-amount-container">
           <input
             type="range"
             value="5"
             min="1"
-            max="50"
+            max="30"
             id="characterAmountRange"
           />
           <input
+            style="font-family: 'Space Mono', monospace"
             class="number-input"
             type="number"
             value="5"
             min="1"
-            max="50"
+            max="30"
             id="characterAmountNumber"
           />
         </div>
+      </div>
 
-        <label for="includeUppercase">Include Uppercase</label>
-        <input type="checkbox" id="includeUppercase" />
+      <div class="chkbx"><input type="checkbox" id="includeUppercase" /></div>
+      <label class="includeUppercase" for="includeUppercase"
+        >Include Uppercase</label
+      >
 
-        <label for="includeNumbers">Include Numbers</label>
-        <input type="checkbox" id="includeNumbers" />
+      <div class="chkbx"><input type="checkbox" id="includeNumbers" /></div>
+      <label class="includeNumbers" for="includeNumbers">Include Numbers</label>
 
-        <label for="includeSymbols">Include Symbols</label>
-        <input type="checkbox" id="includeSymbols" />
+      <div class="chkbx"><input type="checkbox" id="includeSymbols" /></div>
+      <label class="includeSymbols" for="includeSymbols">Include Symbols</label>
 
-        <button class="btn" type="submit">Generate Password</button>
-      </form>
-    </div>
+      <button class="btn" type="submit">🏃</button>
+    </form>
   </body>
 </html>
